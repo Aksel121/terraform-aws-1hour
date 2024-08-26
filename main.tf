@@ -1,12 +1,12 @@
-terraform { 
-  cloud { 
-    
-    organization = "02-spring-cloud2024" 
+terraform {
+  cloud {
 
-    workspaces { 
-      name = "new_workspace" 
-    } 
-  } 
+    organization = "02-spring-cloud2024"
+
+    workspaces {
+      name = "new_workspace"
+    }
+  }
 }
 
 provider "aws" {
@@ -18,7 +18,7 @@ provider "aws" {
 
 module "network" {
   source = "./modules"
-  
+
 
 
   sg_rules = [
@@ -31,10 +31,10 @@ module "network" {
       description = "SSH"
     },
     {
-      type        = "egress"
-      from_port   = 0
-      to_port     = 0
-      
+      type      = "egress"
+      from_port = 0
+      to_port   = 0
+
       cidr_blocks = ["0.0.0.0/0"]
       description = "All traffic"
     }
